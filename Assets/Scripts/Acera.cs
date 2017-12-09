@@ -15,8 +15,12 @@ public class Acera : MonoBehaviour {
 
 	Transform thisTransform;
 
-	// Use this for initialization
-	void Start () {
+	void Init(){
+
+		randomInt = 0;
+		counter = 0;
+		randomCounter = 0;
+		treesAmount = 0;
 		thisTransform = gameObject.transform;
 		counter = -1;
 		for (int i = 0; i < 3; i++) {
@@ -50,6 +54,10 @@ public class Acera : MonoBehaviour {
 			ponerArboles("Atras");
 		}
 	}
+	// Use this for initialization
+	void Start () {
+		Init ();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -59,7 +67,8 @@ public class Acera : MonoBehaviour {
 	void ponerEdificios(int x, int z)
 	{
 		randomInt = Random.Range (0, Edificios.Length);
-		Instantiate (Edificios[randomInt],thisTransform.position + new Vector3(x,0,z),thisTransform.rotation);
+		GameObject nuevoEdificio = Instantiate (Edificios[randomInt],thisTransform.position + new Vector3(x,0,z),thisTransform.rotation);
+		nuevoEdificio.transform.parent = gameObject.transform;
 	}
 
 
@@ -80,6 +89,7 @@ public class Acera : MonoBehaviour {
 			arbolZ = 1.78f;
 		}
 		randomInt = Random.Range (0, Arboles.Length);
-		Instantiate (Arboles[randomInt],thisTransform.position + new Vector3(arbolX,0,arbolZ),thisTransform.rotation);
+		GameObject nuevoArbol = Instantiate (Arboles[randomInt],thisTransform.position + new Vector3(arbolX,0,arbolZ),thisTransform.rotation);
+		nuevoArbol.transform.parent = gameObject.transform;
 	}
 }
