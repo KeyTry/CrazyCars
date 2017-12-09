@@ -36,3 +36,28 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Tensorflow Sharp Files
+/unity-environment/Assets/ML-Agents/Plugins/Android*
+/unity-environment/Assets/ML-Agents/Plugins/iOS*
+/unity-environment/Assets/ML-Agents/Plugins/Computer*
+/unity-environment/Assets/ML-Agents/Plugins/System*
+
+
+# Mac hidden files
+*.DS_Store
+*/.ipynb_checkpoints
+*/.idea
+*.pyc
+*.idea/misc.xml
+*.idea/modules.xml
+*.iml
+*.xml
+*.cache
+*/build/
+*/dist/
+*.egg-info*
+*.eggs*
+*.gitignore.swp
+
+.DS_Store
