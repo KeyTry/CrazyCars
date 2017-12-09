@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4012758988214814}
-  - component: {fileID: 114194618847499750}
   - component: {fileID: 54856318830564834}
   - component: {fileID: 65796394873297372}
+  - component: {fileID: 114009775761976352}
   m_Layer: 0
   m_Name: carro jugador
   m_TagString: Untagged
@@ -52,7 +52,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721022846844504}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.079998, y: 0, z: -3.2099998}
   m_LocalScale: {x: 0.6171474, y: 0.6635632, z: 0.6635632}
   m_Children:
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.3, y: 11, z: 14.499999}
   m_Center: {x: 0, y: 5.5, z: 0}
---- !u!114 &114194618847499750
+--- !u!114 &114009775761976352
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -115,14 +115,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1721022846844504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bc0ee4c4db714f359be16366d740399, type: 3}
+  m_Script: {fileID: 11500000, guid: 974d567c7026c428c999e59fec62c4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 100
-  minSpeed: 0
-  acceleration: 70
-  brake: 50
-  turnSpeed: 500
+  speed: 20
+  constSpeed: 1
+  HightSpeed: 2
+  tilt: -1
 --- !u!137 &137852866251680840
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
