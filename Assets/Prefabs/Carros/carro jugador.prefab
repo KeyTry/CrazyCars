@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721022846844504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.079998, y: 1, z: -3.2099998}
+  m_LocalPosition: {x: 23.079998, y: 0, z: -3.2099998}
   m_LocalScale: {x: 0.6171474, y: 0.6635632, z: 0.6635632}
   m_Children:
   - {fileID: 4530182732918334}
@@ -87,9 +87,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721022846844504}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 0.1
+  m_Drag: 0.5
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -101,7 +101,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721022846844504}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ca36940facf5441899616920db628d23, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -113,15 +113,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721022846844504}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bc0ee4c4db714f359be16366d740399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 200
+  maxSpeed: 100
+  minSpeed: 0
   acceleration: 70
-  brake: 100
-  turnSpeed: 80
+  brake: 50
+  turnSpeed: 500
 --- !u!137 &137852866251680840
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
