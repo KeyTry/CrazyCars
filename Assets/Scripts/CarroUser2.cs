@@ -22,6 +22,7 @@ public class CarroUser2 : MonoBehaviour
 
 	public AudioClip explosionSound;
 	public AudioClip accelerationSound;
+	public AudioClip idleSound;
 	AudioSource audioSource;
 
 	public float tilt;
@@ -33,6 +34,8 @@ public class CarroUser2 : MonoBehaviour
 	public bool toExplode;
 
 	bool crash;
+	bool accelerating;
+	bool idle;
 
 	void Awake ()
 	{
@@ -43,6 +46,9 @@ public class CarroUser2 : MonoBehaviour
 		glow.SetActive (false);
 		inPower = false;
 		audioSource = gameObject.GetComponent<AudioSource> ();
+		idle = false;
+		accelerating = true;
+		crash = false;
 	}
 
 	void FixedUpdate ()
@@ -55,14 +61,19 @@ public class CarroUser2 : MonoBehaviour
 
 			if (moveVertical > 0) {
 				moveVertical += (HightSpeed * moveVertical);
-				if (!crash) {
+				if (!crash && !accelerating && idle) {
 					audioSource.clip = accelerationSound;
 					audioSource.Play ();
+					accelerating = true;
+					idle = false;
 				}
 			} else {
 				moveVertical += constSpeed;
-				if (!crash) {
-					audioSource.Stop ();
+				if (!crash && !idle && accelerating) {
+					audioSource.clip = idleSound;
+					audioSource.Play ();
+					accelerating = false;
+					idle = true;
 				}
 			}
 

@@ -2101,23 +2101,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1504075037588296
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4973939681126076}
-  - component: {fileID: 82228984092198868}
-  - component: {fileID: 114736637359533152}
-  m_Layer: 0
-  m_Name: Audio Source
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1507024280021714
 GameObject:
   m_ObjectHideFlags: 1
@@ -3642,6 +3625,7 @@ GameObject:
   - component: {fileID: 65384301007248988}
   - component: {fileID: 54486734184528814}
   - component: {fileID: 114625511531058866}
+  - component: {fileID: 82682385349669630}
   m_Layer: 0
   m_Name: carro morado
   m_TagString: Car
@@ -5809,7 +5793,6 @@ Transform:
   m_Children:
   - {fileID: 4552444113302380}
   - {fileID: 4438905289633204}
-  - {fileID: 4973939681126076}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -6722,19 +6705,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4438905289633204}
   m_RootOrder: 48
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4973939681126076
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1504075037588296}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -130523.86, y: 72747.24, z: -4453.748}
-  m_LocalScale: {x: 288.67987, y: 288.67953, z: 288.67953}
-  m_Children: []
-  m_Father: {fileID: 4597816106384278}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4979044418480542
 Transform:
@@ -16139,12 +16109,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.2459507, y: 7.541398, z: 9.7926235}
   m_Center: {x: 0, y: 3.647087, z: 0.07977009}
---- !u!82 &82228984092198868
+--- !u!82 &82682385349669630
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1504075037588296}
+  m_GameObject: {fileID: 1968020700916960}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -16251,17 +16221,4 @@ MonoBehaviour:
   explodeAnimator: {fileID: 95249782798925546}
   originalMesh: {fileID: 1914361585225428}
   explodeMesh: {fileID: 1082889921180666}
---- !u!114 &114736637359533152
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1504075037588296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d30e7446c59e4b35aabb927db1bd5dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios:
-  - {fileID: 8300000, guid: 77e1426d55af945aeb5421ff6d770bcc, type: 3}
-  - {fileID: 8300000, guid: 59915675f706545e4aed782591f7eb4f, type: 3}
+  boomSound: {fileID: 8300000, guid: 1559935047e334c65898ec44f388cd5b, type: 3}
