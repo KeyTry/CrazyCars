@@ -17,7 +17,7 @@ public class CarroEplode : MonoBehaviour {
 	void Start () {
 		animator = explodeMesh.GetComponent<Animator> ();
 
-		Invoke ("Explode", 3f);
+//		Invoke ("Explode", 3f);
 	}
 	
 	// Update is called once per frame
