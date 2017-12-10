@@ -17,6 +17,9 @@ public class CarroEplode : MonoBehaviour {
 	void Start () {
 		animator = explodeMesh.GetComponent<Animator> ();
 
+	}
+
+	public void InvokeExplode(){
 		Invoke ("Explode", 4f);
 	}
 	

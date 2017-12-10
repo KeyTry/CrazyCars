@@ -9,6 +9,8 @@ public class Boundary
 
 public class CarroUser2 : MonoBehaviour
 {
+	CarroEplode explode;
+	CarroScript colScript;
 	public float speed;
 	public float constSpeed;
 	public float HightSpeed;
@@ -21,6 +23,7 @@ public class CarroUser2 : MonoBehaviour
 
 	void Awake ()
 	{
+		explode = gameObject.GetComponent<CarroEplode> ();
 		rigidbody = GetComponent<Rigidbody> ();
 	}
 
@@ -41,5 +44,15 @@ public class CarroUser2 : MonoBehaviour
 		rigidbody.velocity = movement * speed;
 
 		rigidbody.rotation = Quaternion.Euler (0.0f, rigidbody.velocity.x * -tilt, 0.0f);
+	}
+		 
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.CompareTag ("Car")) {
+			Rigidbody colRb = col.gameObject.GetComponent<Rigidbody> ();
+			if ((colRb.velocity.magnitude > 7f) && (colRb.velocity.magnitude > rigidbody.velocity.magnitude)) {
+				explode.Explode ();			
+			}
+		}
 	}
 }

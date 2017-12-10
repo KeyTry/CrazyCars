@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114625511531058866}
   m_Layer: 0
   m_Name: carro morado
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,8 +144,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.2459507, y: 9.8, z: 7.3}
-  m_Center: {x: 0, y: 0, z: 3.7}
+  m_Size: {x: 4.2459507, y: 7.541398, z: 9.7926235}
+  m_Center: {x: 0, y: 3.647087, z: 0.07977009}
 --- !u!114 &114625511531058866
 MonoBehaviour:
   m_ObjectHideFlags: 1

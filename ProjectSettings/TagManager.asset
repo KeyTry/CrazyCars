@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Outer
   - Car
+  - Killer
   layers:
   - Default
   - TransparentFX
