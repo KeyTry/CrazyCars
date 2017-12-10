@@ -17,6 +17,8 @@ public class CityDestroyer : MonoBehaviour {
 
 	void OnTriggerExit(Collider col)
 	{
-		Destroy (section);
+		if (col.CompareTag ("Player")) {
+			Destroy (section);
+		}
 	}
 }

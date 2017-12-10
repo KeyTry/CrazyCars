@@ -17,6 +17,8 @@ public class SpawnCity : MonoBehaviour {
 
 	void OnTriggerExit(Collider col)
 	{
-		GameObject section = Instantiate ((Resources.Load("Section")) as GameObject, spawnPoint.position,spawnPoint.rotation);
+		if (col.CompareTag ("Player")) {
+			GameObject section = Instantiate ((Resources.Load("Section")) as GameObject, spawnPoint.position,spawnPoint.rotation);
+		}
 	}
 }
