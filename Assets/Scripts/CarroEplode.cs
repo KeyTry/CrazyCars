@@ -37,9 +37,9 @@ public class CarroEplode : MonoBehaviour {
 	}
 
 	void EndAnimation(){
-		Debug.Log ("Termino la animacion");
+		// Debug.Log ("Termino la animacion");
 		Time.timeScale = 1;
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
-//		Initiate.Fade (SceneManager.GetActiveScene().name, Color.white, 2.0f);
+		//SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+		Initiate.Fade (SceneManager.GetActiveScene().name, Color.white, 1.0f);
 	}
 }

@@ -7,13 +7,11 @@ public class Timer : MonoBehaviour
 
 	public Semaforo semaforo;
 	public CarroEplode explode;
-	public float tiempoRapido = 8f;
 	public float tiempoDespacio = 4f;
 	public float tiempoLento = 2f;
 
 	private float input;
 
-	private bool muyRapido;
 	private bool muyDespacio;
 	private bool muyLento;
 
@@ -24,51 +22,44 @@ public class Timer : MonoBehaviour
 	private float tiempo;
 	private float timer;
 
+	public bool setToExplode;
+
 	void Update ()
 	{
-		input = Input.GetAxis ("Vertical");
+		if (setToExplode) {
+			input = Input.GetAxis ("Vertical");
 
 
-		if (input == 1 && !muyRapido) {
-			Reset ();
-			tiempo = 0;
-			timer = tiempoRapido;
+			if (input == 0 && !muyDespacio) {
+				Reset ();
+				tiempo = 0;
+				timer = tiempoDespacio;
 
-			muyRapido = true;
-			muyDespacio = false;
-			muyLento = false;
-		} else if (input == 0 && !muyDespacio) {
-			Reset ();
-			tiempo = 0;
-			timer = tiempoDespacio;
+				muyDespacio = true;
+				muyLento = false;
 
-			muyRapido = false;
-			muyDespacio = true;
-			muyLento = false;
+			} else if (input == -1 && !muyLento) {
+				Reset ();
+				tiempo = 0;
+				timer = tiempoLento;
 
-		} else if (input == -1 && !muyLento) {
-			Reset ();
-			tiempo = 0;
-			timer = tiempoLento;
+				muyDespacio = false;
+				muyLento = true;
+			}
 
-			muyRapido = false;
-			muyDespacio = false;
-			muyLento = true;
+			tiempo += Time.deltaTime;
+
+			if (tiempo > (timer / 3) && !primeraLLamada) {
+				primeraLLamada = true;
+				PrimeraLlamada ();
+			} else if (tiempo > (timer / 3) * 2 && !segundaLlamada) {
+				segundaLlamada = true;
+				SegundaLlamada ();
+			} else if (tiempo > timer && !terceraLlamada) {
+				terceraLlamada = true;
+				TerceraLlamada ();
+			}
 		}
-
-		tiempo += Time.deltaTime;
-
-		if (tiempo > (timer / 3) && !primeraLLamada) {
-			primeraLLamada = true;
-			PrimeraLlamada ();
-		} else if (tiempo > (timer / 3) * 2 && !segundaLlamada) {
-			segundaLlamada = true;
-			SegundaLlamada ();
-		} else if (tiempo > timer && !terceraLlamada) {
-			terceraLlamada = true;
-			TerceraLlamada ();
-		}
-		
 	}
 
 	void PrimeraLlamada ()
