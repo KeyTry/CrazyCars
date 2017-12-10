@@ -9,6 +9,10 @@ public class Boundary
 
 public class CarroUser2 : MonoBehaviour
 {
+	public GameObject glow;
+	public float powerTime =  3f;
+	public bool inPower;
+
 	public bool input;
 	CarroEplode explode;
 	CarroScript colScript;
@@ -29,6 +33,9 @@ public class CarroUser2 : MonoBehaviour
 		input = false;
 		explode = gameObject.GetComponent<CarroEplode> ();
 		rigidbody = GetComponent<Rigidbody> ();
+
+		glow.SetActive (false);
+		inPower = false;
 	}
 
 	void FixedUpdate ()
@@ -59,6 +66,30 @@ public class CarroUser2 : MonoBehaviour
 			if (toExplode) {
 				explode.Explode ();
 			}
+
+			if (inPower) {
+				col.gameObject.GetComponent<CarroScript> ().Explode ();
+			}
+
+		}else if (col.gameObject.CompareTag ("Power") && !inPower) {
+			Destroy (col.gameObject);
+			StartCoroutine(Power());
 		}
+	}
+
+	IEnumerator Power(){
+
+		glow.SetActive (true);
+
+		inPower = true;
+		toExplode = false;
+
+		yield return new WaitForSeconds(powerTime);
+
+		glow.SetActive (true);
+
+		inPower = false;
+		toExplode = true;
+
 	}
 }
