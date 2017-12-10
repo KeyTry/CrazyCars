@@ -5,9 +5,17 @@ using UnityEngine;
 public class CarroScript : MonoBehaviour {
 
 	public float speed;	
+
+	public Animator explodeAnimator;
+	public GameObject originalMesh;
+	public GameObject explodeMesh;
+
 	private Rigidbody rb;
 
-
+	void Awake(){
+		originalMesh.SetActive (true);
+		explodeMesh.SetActive (false);
+	}
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -20,5 +28,12 @@ public class CarroScript : MonoBehaviour {
 
 		rb = GetComponent<Rigidbody> ();
 		rb.velocity = transform.forward * speed;
+	}
+
+	public void Explode () {
+		originalMesh.SetActive (false);
+		explodeMesh.SetActive (true);
+
+		explodeAnimator.SetTrigger ("Explode");
 	}
 }
