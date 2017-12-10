@@ -16,11 +16,12 @@ public class CarroEplode : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = explodeMesh.GetComponent<Animator> ();
-
 	}
 
-	public void InvokeExplode(){
-		Invoke ("Explode", 4f);
+	public void Update(){
+		if (Input.GetButton("Fire1")) {
+			Explode ();
+		}
 	}
 	
 	// Update is called once per frame
