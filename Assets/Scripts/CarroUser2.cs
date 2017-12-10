@@ -71,8 +71,13 @@ public class CarroUser2 : MonoBehaviour
 				col.gameObject.GetComponent<CarroScript> ().Explode ();
 			}
 
-		}else if (col.gameObject.CompareTag ("Power") && !inPower) {
-			Destroy (col.gameObject);
+		}
+	}
+
+	public void ActivatePower( Power obj ){
+		Destroy (obj.gameObject);
+
+		if (!inPower) {
 			StartCoroutine(Power());
 		}
 	}
@@ -86,7 +91,7 @@ public class CarroUser2 : MonoBehaviour
 
 		yield return new WaitForSeconds(powerTime);
 
-		glow.SetActive (true);
+		glow.SetActive (false);
 
 		inPower = false;
 		toExplode = true;

@@ -7,6 +7,7 @@ TagManager:
   - Outer
   - Car
   - Killer
+  - Power
   layers:
   - Default
   - TransparentFX
