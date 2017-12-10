@@ -31,7 +31,7 @@ public class CarroUser2 : MonoBehaviour
 
 
 		if (moveVertical > 0) {
-			moveVertical += HightSpeed;
+			moveVertical += (HightSpeed * moveVertical);
 
 		} else {
 			moveVertical += constSpeed;
