@@ -12,9 +12,14 @@ public class CarroScript : MonoBehaviour {
 
 	private Rigidbody rb;
 
+	private AudioSource audioSource;
+
+	public AudioClip boomSound;
+
 	void Awake(){
 		originalMesh.SetActive (true);
 		explodeMesh.SetActive (false);
+		audioSource = gameObject.GetComponent<AudioSource> ();
 	}
 	// Use this for initialization
 	void Start () {
@@ -31,9 +36,10 @@ public class CarroScript : MonoBehaviour {
 	}
 
 	public void Explode () {
+		audioSource.clip = boomSound;
+		audioSource.Play ();
 		originalMesh.SetActive (false);
 		explodeMesh.SetActive (true);
-
 		explodeAnimator.SetTrigger ("Explode");
 	}
 }

@@ -493,6 +493,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1511660920781802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4126208239754290}
+  - component: {fileID: 114885390806178876}
+  m_Layer: 0
+  m_Name: PowerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1523164023273014
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1542602228209258
 GameObject:
   m_ObjectHideFlags: 1
@@ -1266,6 +1282,19 @@ Transform:
   m_Father: {fileID: 4782598882136514}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4126208239754290
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511660920781802}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.5, y: 0, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4418396826381088}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4127880582707528
 Transform:
   m_ObjectHideFlags: 1
@@ -1550,6 +1579,7 @@ Transform:
   - {fileID: 4747950695708800}
   - {fileID: 4275069365546628}
   - {fileID: 4782598882136514}
+  - {fileID: 4126208239754290}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3868,6 +3898,18 @@ MonoBehaviour:
   - {fileID: 1248737683262562, guid: 737b66ed5cd724325a11827180a2820d, type: 2}
   - {fileID: 1968020700916960, guid: 02c80d87847ca40318f37eec393d4a5a, type: 2}
   - {fileID: 1066990218161792, guid: 2e9d3b5732d6f485c9e1f93689919ed2, type: 2}
+--- !u!114 &114885390806178876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511660920781802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2360fa524ee64b88b8d92b895cb2550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: {fileID: 1126068594974918, guid: 8dd6b4c6281ba4294b95fc13d75ba85e, type: 2}
 --- !u!114 &114896364504212886
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2538,6 +2538,7 @@ GameObject:
   - component: {fileID: 54860473654240732}
   - component: {fileID: 65074084336086302}
   - component: {fileID: 114354873239026740}
+  - component: {fileID: 82088122745079296}
   m_Layer: 0
   m_Name: Camion
   m_TagString: Car
@@ -48207,6 +48208,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.013013, y: 7.056688, z: 0.92561406}
   m_Center: {x: -0.08026048, y: 3.028344, z: 0.7799805}
+--- !u!82 &82088122745079296
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1248737683262562}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95412121504280074
 Animator:
   serializedVersion: 3
@@ -48239,3 +48320,4 @@ MonoBehaviour:
   explodeAnimator: {fileID: 95412121504280074}
   originalMesh: {fileID: 1456983854634582}
   explodeMesh: {fileID: 1984934364245334}
+  boomSound: {fileID: 8300000, guid: 1559935047e334c65898ec44f388cd5b, type: 3}

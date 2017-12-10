@@ -20,6 +20,11 @@ public class CarroUser2 : MonoBehaviour
 	public float constSpeed;
 	public float HightSpeed;
 
+	public AudioClip explosionSound;
+	public AudioClip accelerationSound;
+	public AudioClip idleSound;
+	AudioSource audioSource;
+
 	public float tilt;
 
 	private float velocity;
@@ -27,6 +32,10 @@ public class CarroUser2 : MonoBehaviour
 	private Rigidbody rigidbody;
 
 	public bool toExplode;
+
+	bool crash;
+	bool accelerating;
+	bool idle;
 
 	void Awake ()
 	{
@@ -36,6 +45,10 @@ public class CarroUser2 : MonoBehaviour
 
 		glow.SetActive (false);
 		inPower = false;
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		idle = false;
+		accelerating = true;
+		crash = false;
 	}
 
 	void FixedUpdate ()
@@ -48,9 +61,20 @@ public class CarroUser2 : MonoBehaviour
 
 			if (moveVertical > 0) {
 				moveVertical += (HightSpeed * moveVertical);
-
+				if (!crash && !accelerating && idle) {
+					audioSource.clip = accelerationSound;
+					audioSource.Play ();
+					accelerating = true;
+					idle = false;
+				}
 			} else {
 				moveVertical += constSpeed;
+				if (!crash && !idle && accelerating) {
+					audioSource.clip = idleSound;
+					audioSource.Play ();
+					accelerating = false;
+					idle = true;
+				}
 			}
 
 			movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
@@ -64,6 +88,11 @@ public class CarroUser2 : MonoBehaviour
 	{
 		if (col.gameObject.CompareTag ("Car")) {
 			if (toExplode) {
+				if (!crash) {
+					audioSource.clip = explosionSound;
+					audioSource.Play ();
+					crash = true;
+				}
 				explode.Explode ();
 			}
 
