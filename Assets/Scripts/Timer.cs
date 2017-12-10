@@ -5,7 +5,8 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
 
-
+	public Semaforo semaforo;
+	public CarroEplode explode;
 	public float tiempoRapido = 8f;
 	public float tiempoDespacio = 4f;
 	public float tiempoLento = 2f;
@@ -72,21 +73,24 @@ public class Timer : MonoBehaviour
 
 	void PrimeraLlamada ()
 	{
-		Debug.Log ("1");
+		semaforo.Luz1 ();
 	}
 
 	void SegundaLlamada ()
 	{
-		Debug.Log ("2");
+		semaforo.Luz2 ();
 	}
 
 	void TerceraLlamada ()
 	{
-		Debug.Log ("3");
+		semaforo.Luz3 ();
+		explode.Explode ();
 	}
 
 	void Reset ()
 	{
+		semaforo.BlankColors ();
+
 		primeraLLamada = false;
 		segundaLlamada = false;
 		terceraLlamada = false;

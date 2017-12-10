@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarroEplode : MonoBehaviour {
 
@@ -18,11 +19,11 @@ public class CarroEplode : MonoBehaviour {
 		animator = explodeMesh.GetComponent<Animator> ();
 	}
 
-	public void Update(){
-		if (Input.GetButton("Fire1")) {
-			Explode ();
-		}
-	}
+//	public void Update(){
+////		if (Input.GetButton("Fire1")) {
+////			Explode ();
+////		}
+//	}
 	
 	// Update is called once per frame
 	public void Explode () {
@@ -37,6 +38,8 @@ public class CarroEplode : MonoBehaviour {
 
 	void EndAnimation(){
 		Debug.Log ("Termino la animacion");
-		Time.timeScale = 0f;
+		Time.timeScale = 1;
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+//		Initiate.Fade (SceneManager.GetActiveScene().name, Color.white, 2.0f);
 	}
 }

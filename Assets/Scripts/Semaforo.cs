@@ -5,40 +5,39 @@ using UnityEngine.UI;
 
 public class Semaforo : MonoBehaviour {
 
-	public Image[] colors;
+	public Image[] imgs;
+	public Color color1 = new Color (178,25,53,255);
+	public Color color2 = new Color (7, 128, 57,255);
+	public Color color3 = new Color (178,25,53,255);
 
-	public Rigidbody player;
-	float currentSpeed;
-
+	public Color blank = new Color (73,73,73,255);
 	// Use this for initialization
 	void Start () {
-		blankColors ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		currentSpeed = player.velocity.magnitude;
-		if(currentSpeed > 7f){
-			blankColors ();
-			colors [1].color = new Color (178,25,53,255);
-			Debug.Log ("Rapido");
-		}
-		if (currentSpeed > 2f && currentSpeed < 7f) {
-			blankColors ();
-			colors [2].color = new Color (7, 128, 57,255);
-			Debug.Log ("Normal");
-		}
-		if (currentSpeed < 2f) {
-			blankColors ();
-			colors [2].color = new Color (178,25,53,255);
-			Debug.Log ("Despacio");
-		}
+		BlankColors ();
 	}
 
-	void blankColors()
+	public void BlankColors()
 	{
-		foreach (Image color in colors) {
-			color.color = new Color (73,73,73,255);
-		}
+		imgs [0].color = blank;
+		imgs [1].color = blank;
+		imgs [2].color = blank;
+	}
+
+	public void Luz1(){
+		imgs [0].color = color1;
+		imgs [1].color = blank;
+		imgs [2].color = blank;
+	}
+
+	public void Luz2(){
+		imgs [0].color = color1;
+		imgs [1].color = color2;
+		imgs [2].color = blank;
+	}
+
+	public void Luz3(){
+		imgs [0].color = color1;
+		imgs [1].color = color2;
+		imgs [2].color = color3;
 	}
 }

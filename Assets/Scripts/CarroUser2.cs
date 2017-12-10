@@ -49,10 +49,7 @@ public class CarroUser2 : MonoBehaviour
 	void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.CompareTag ("Car")) {
-			Rigidbody colRb = col.gameObject.GetComponent<Rigidbody> ();
-			if ((colRb.velocity.magnitude > 7f) && (colRb.velocity.magnitude > rigidbody.velocity.magnitude)) {
 				explode.Explode ();			
-			}
 		}
 	}
 }
