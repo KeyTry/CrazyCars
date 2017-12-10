@@ -11,8 +11,6 @@ public class Acera : MonoBehaviour {
 	int counter;
 	int randomCounter;
 
-	int treesAmount;
-
 	Transform thisTransform;
 
 	void Init(){
@@ -20,7 +18,6 @@ public class Acera : MonoBehaviour {
 		randomInt = 0;
 		counter = 0;
 		randomCounter = 0;
-		treesAmount = 0;
 		thisTransform = gameObject.transform;
 		counter = -1;
 		for (int i = 0; i < 3; i++) {

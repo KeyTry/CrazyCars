@@ -14,10 +14,11 @@ public class CarroScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	public void InitVelocity () {
 //		Vector3 movement = new Vector3 (0.0f, 0.0f, 
 //			transform.forward * speed);
 
+		rb = GetComponent<Rigidbody> ();
 		rb.velocity = transform.forward * speed;
 	}
 }

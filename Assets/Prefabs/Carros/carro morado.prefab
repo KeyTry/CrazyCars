@@ -37,6 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4597816106384278}
   - component: {fileID: 65384301007248988}
+  - component: {fileID: 54486734184528814}
+  - component: {fileID: 114625511531058866}
   m_Layer: 0
   m_Name: carro morado
   m_TagString: Untagged
@@ -50,27 +52,27 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914361585225428}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4597816106384278}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4597816106384278
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1968020700916960}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 22.65, y: 0, z: 33.67}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -4.71, y: 0, z: 5.5200005}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 4552444113302380}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &23863683891725524
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -117,6 +119,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914361585225428}
   m_Mesh: {fileID: 4300000, guid: f477c352da8ca465bb27f8c789eaf2c2, type: 3}
+--- !u!54 &54486734184528814
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1968020700916960}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!65 &65384301007248988
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -129,3 +146,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.2459507, y: 9.8, z: 7.3}
   m_Center: {x: 0, y: 0, z: 3.7}
+--- !u!114 &114625511531058866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1968020700916960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe8ca14d7a8a44c9919bf1a9acc7339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
