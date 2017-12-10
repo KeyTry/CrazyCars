@@ -8,6 +8,7 @@ TagManager:
   - Car
   - Killer
   - Power
+  - GameMusic
   layers:
   - Default
   - TransparentFX
