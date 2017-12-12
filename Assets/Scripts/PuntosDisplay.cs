@@ -19,11 +19,9 @@ public class PuntosDisplay : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void OnGUI () {
 		txt.text = ""+gm.displayPoints;
-		Debug.Log ("magnitude: " + carro.velocity.magnitude);
 		if (carro.velocity.magnitude > 18) {
-			Debug.Log ("Changing color!");
 			txt.color = redColor;
 		}
 		else

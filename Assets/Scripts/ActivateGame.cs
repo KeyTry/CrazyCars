@@ -29,7 +29,6 @@ public class ActivateGame : MonoBehaviour {
         paused = false;
 		carroScript = carro.GetComponent<CarroUser2>();
 		carSpawners = city.transform.Find ("CarSpawners").gameObject;
-		Debug.Log ("Found spawners!: "+carSpawners.name);
 		gm = gameObject.GetComponent<GameManager> ();
 		if (inicio) {
 			DeactivateStuff ();

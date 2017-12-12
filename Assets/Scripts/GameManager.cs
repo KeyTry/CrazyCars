@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour {
 			if (carroSpeed > 0.3f) {
 				points = ((points + ((Mathf.Pow (1.2f, (carroSpeed * 0.4f))))));
 				displayPoints = (int)(points / 10);
-				Debug.Log ("Points! " + points);
 			}
 		}
 	}
