@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActivateGame : MonoBehaviour {
 
@@ -9,15 +10,23 @@ public class ActivateGame : MonoBehaviour {
 	public GameObject uiStuff;
 	public GameObject menuUI;
 	public GameObject effTheRules;
+    public GameObject pauseMenu;
 
 	CarroUser2 carroScript;
 	GameObject carSpawners;
 	GameManager gm;
 
+    bool paused;
+    float previousTimeScale;
+
 	static bool inicio = true;
+
+    public Button resumeButton;
 
 	// Use this for initialization
 	void Start () {
+        previousTimeScale = 0f;
+        paused = false;
 		carroScript = carro.GetComponent<CarroUser2>();
 		carSpawners = city.transform.Find ("CarSpawners").gameObject;
 		Debug.Log ("Found spawners!: "+carSpawners.name);
@@ -31,7 +40,7 @@ public class ActivateGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        Pause();
 	}
 
 	void DeactivateStuff(){
@@ -55,10 +64,40 @@ public class ActivateGame : MonoBehaviour {
 	}
 
 	public void ActivateStuff()
-	{
-		carroScript.toExplode = true;
+    {
+        carroScript.input = true;
+        carroScript.toExplode = true;
 		uiStuff.gameObject.SetActive (true);
 		carSpawners.SetActive (true);
 		gm.countPoints = true;
 	}
+
+    public void Pause()
+    {
+        if(Input.GetButtonDown("Cancel"))
+        {
+            if (!paused)
+            {
+                previousTimeScale = Time.timeScale;
+                Time.timeScale = 0;
+                DeactivateStuff();
+                pauseMenu.gameObject.SetActive(true);
+                carroScript.StopCar();
+                resumeButton.Select();
+                paused = true;
+            }
+        }
+    }
+
+    public void UnPause()
+    {
+        if(paused)
+        {
+            Time.timeScale = previousTimeScale;
+            pauseMenu.gameObject.SetActive(false);
+            ActivateStuff();
+            carroScript.ResumeCar();
+            paused = false;
+        }
+    }
 }
