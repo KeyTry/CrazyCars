@@ -1,20 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MusicKeeper : MonoBehaviour {
+public class MusicKeeper :MonoBehaviour
+{
     static GameObject thisMusique;
 
-    private void Start()
+    private void Start ( )
     {
-        if (thisMusique == null)
+        if( thisMusique == null )
         {
             thisMusique = gameObject;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+            DontDestroyOnLoad( gameObject );
+        } else
         {
-            Destroy(gameObject);
+            Destroy( gameObject );
         }
     }
 }

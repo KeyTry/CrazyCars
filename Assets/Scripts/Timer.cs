@@ -1,89 +1,93 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class Timer :MonoBehaviour
 {
 
-	public Semaforo semaforo;
-	public CarroEplode explode;
-	public float tiempoDespacio = 4f;
-	public float tiempoLento = 2f;
+    public Semaforo semaforo;
+    public CarroEplode explode;
+    public float tiempoDespacio = 4f;
+    public float tiempoLento = 2f;
 
-	private float input;
+    private float input;
 
-	private bool muyDespacio;
-	private bool muyLento;
+    private bool muyDespacio;
+    private bool muyLento;
 
-	private bool primeraLLamada;
-	private bool segundaLlamada;
-	private bool terceraLlamada;
+    private bool primeraLLamada;
+    private bool segundaLlamada;
+    private bool terceraLlamada;
 
-	private float tiempo;
-	private float timer;
+    private float tiempo;
+    private float timer;
 
-	public bool setToExplode;
+    public bool setToExplode;
 
-	void Update ()
-	{
-		if (setToExplode) {
-			input = Input.GetAxis ("Vertical");
+    void Update ( )
+    {
+        if( setToExplode )
+        {
+            input = Input.GetAxis( "Vertical" );
 
 
-			if (input == 0 && !muyDespacio) {
-				Reset ();
-				tiempo = 0;
-				timer = tiempoDespacio;
+            if( input == 0 && !muyDespacio )
+            {
+                Reset( );
+                tiempo = 0;
+                timer = tiempoDespacio;
 
-				muyDespacio = true;
-				muyLento = false;
+                muyDespacio = true;
+                muyLento = false;
 
-			} else if (input == -1 && !muyLento) {
-				Reset ();
-				tiempo = 0;
-				timer = tiempoLento;
+            } else if( input == -1 && !muyLento )
+            {
+                Reset( );
+                tiempo = 0;
+                timer = tiempoLento;
 
-				muyDespacio = false;
-				muyLento = true;
-			}
+                muyDespacio = false;
+                muyLento = true;
+            }
 
-			tiempo += Time.deltaTime;
+            tiempo += Time.deltaTime;
 
-			if (tiempo > (timer / 3) && !primeraLLamada) {
-				primeraLLamada = true;
-				PrimeraLlamada ();
-			} else if (tiempo > (timer / 3) * 2 && !segundaLlamada) {
-				segundaLlamada = true;
-				SegundaLlamada ();
-			} else if (tiempo > timer && !terceraLlamada) {
-				terceraLlamada = true;
-				TerceraLlamada ();
-			}
-		}
-	}
+            if( tiempo > ( timer / 3 ) && !primeraLLamada )
+            {
+                primeraLLamada = true;
+                PrimeraLlamada( );
+            } else if( tiempo > ( timer / 3 ) * 2 && !segundaLlamada )
+            {
+                segundaLlamada = true;
+                SegundaLlamada( );
+            } else if( tiempo > timer && !terceraLlamada )
+            {
+                terceraLlamada = true;
+                TerceraLlamada( );
+            }
+        }
+    }
 
-	void PrimeraLlamada ()
-	{
-		semaforo.Luz1 ();
-	}
+    void PrimeraLlamada ( )
+    {
+        semaforo.Luz1( );
+    }
 
-	void SegundaLlamada ()
-	{
-		semaforo.Luz2 ();
-	}
+    void SegundaLlamada ( )
+    {
+        semaforo.Luz2( );
+    }
 
-	void TerceraLlamada ()
-	{
-		semaforo.Luz3 ();
-		explode.Explode ();
-	}
+    void TerceraLlamada ( )
+    {
+        semaforo.Luz3( );
+        explode.Explode( );
+    }
 
-	void Reset ()
-	{
-		semaforo.BlankColors ();
+    void Reset ( )
+    {
+        semaforo.BlankColors( );
 
-		primeraLLamada = false;
-		segundaLlamada = false;
-		terceraLlamada = false;
-	}
+        primeraLLamada = false;
+        segundaLlamada = false;
+        terceraLlamada = false;
+    }
 }
