@@ -11,9 +11,15 @@ public class TimeScaler : MonoBehaviour {
 		input = Input.GetAxis ("Vertical");
 
 		if (input > 0) {
+			Time.timeScale = 0.6f;
+        } 
+        if (input == 0) {
 			Time.timeScale = 0.4f;
-		} else if (input < 0) {
-			Time.timeScale = 0.2f;
-		}
-	}
+        }
+        if (input < 0)
+        {
+            Time.timeScale = 0.2f;
+        }
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
+    }
 }
