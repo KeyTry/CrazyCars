@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 65088040672599358}
   - component: {fileID: 114366596688692158}
   - component: {fileID: 82430240559591638}
+  - component: {fileID: 114808084346532070}
   m_Layer: 0
   m_Name: Naranja
   m_TagString: Car
@@ -15491,8 +15492,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe8ca14d7a8a44c9919bf1a9acc7339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   explodeAnimator: {fileID: 95226649530116618}
   originalMesh: {fileID: 1244787433222300}
   explodeMesh: {fileID: 1492803329375492}
   boomSound: {fileID: 8300000, guid: 1559935047e334c65898ec44f388cd5b, type: 3}
+--- !u!114 &114808084346532070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066990218161792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e3c3abf1477e1429cc0d1410475255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
