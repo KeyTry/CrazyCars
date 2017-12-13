@@ -279,11 +279,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114233302881081858, guid: 3e307819aec774a8e9c9c7e1ead19724,
-        type: 2}
-      propertyPath: carrosList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4418396826381088, guid: 3e307819aec774a8e9c9c7e1ead19724, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -316,27 +311,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114233302881081858, guid: 3e307819aec774a8e9c9c7e1ead19724,
-        type: 2}
-      propertyPath: carrosList.Array.data[0]
-      value: 
-      objectReference: {fileID: 1248737683262562, guid: 737b66ed5cd724325a11827180a2820d,
-        type: 2}
-    - target: {fileID: 114233302881081858, guid: 3e307819aec774a8e9c9c7e1ead19724,
-        type: 2}
-      propertyPath: carrosList.Array.data[1]
-      value: 
-      objectReference: {fileID: 1968020700916960, guid: 02c80d87847ca40318f37eec393d4a5a,
-        type: 2}
-    - target: {fileID: 114233302881081858, guid: 3e307819aec774a8e9c9c7e1ead19724,
-        type: 2}
-      propertyPath: carrosList.Array.data[2]
-      value: 
-      objectReference: {fileID: 1066990218161792, guid: 2e9d3b5732d6f485c9e1f93689919ed2,
-        type: 2}
     - target: {fileID: 4475663438542588, guid: 3e307819aec774a8e9c9c7e1ead19724, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -17.48
+      value: -17.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e307819aec774a8e9c9c7e1ead19724, type: 2}
