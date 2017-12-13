@@ -1,40 +1,36 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CarroScript :MonoBehaviour
 {
-
-    public float speed;
+    private readonly float MIN_SPEED = 0.5f;
+    private readonly float MAX_SPEED = 3f;
 
     public Animator explodeAnimator;
     public GameObject originalMesh;
     public GameObject explodeMesh;
 
+    public AudioClip boomSound;
     private Rigidbody rb;
 
     private AudioSource audioSource;
 
-    public AudioClip boomSound;
-
     void Awake ( )
+    {
+        audioSource = gameObject.GetComponent<AudioSource>( );
+        rb = GetComponent<Rigidbody>( );
+    }
+
+    private void OnDespawned ( )
+    {
+        rb.velocity = Vector3.zero;
+    }
+
+    private void OnSpawned ( )
     {
         originalMesh.SetActive( true );
         explodeMesh.SetActive( false );
-        audioSource = gameObject.GetComponent<AudioSource>( );
-    }
-    // Use this for initialization
-    void Start ( )
-    {
-        rb = GetComponent<Rigidbody>( );
-    }
-
-    // Update is called once per frame
-    public void InitVelocity ( )
-    {
-        //		Vector3 movement = new Vector3 (0.0f, 0.0f, 
-        //			transform.forward * speed);
-
-        rb = GetComponent<Rigidbody>( );
-        rb.velocity = transform.forward * speed;
+        rb.velocity = transform.forward * UnityEngine.Random.Range( MIN_SPEED, MAX_SPEED );
     }
 
     public void Explode ( )

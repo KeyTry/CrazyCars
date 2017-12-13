@@ -3626,6 +3626,7 @@ GameObject:
   - component: {fileID: 54486734184528814}
   - component: {fileID: 114625511531058866}
   - component: {fileID: 82682385349669630}
+  - component: {fileID: 114970540399498906}
   m_Layer: 0
   m_Name: carro morado
   m_TagString: Car
@@ -5788,7 +5789,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1968020700916960}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -4.71, y: 0, z: 5.5200005}
+  m_LocalPosition: {x: 2.3671825, y: -1.0170269, z: -6.262942}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 4552444113302380}
@@ -16217,8 +16218,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe8ca14d7a8a44c9919bf1a9acc7339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   explodeAnimator: {fileID: 95249782798925546}
   originalMesh: {fileID: 1914361585225428}
   explodeMesh: {fileID: 1082889921180666}
   boomSound: {fileID: 8300000, guid: 1559935047e334c65898ec44f388cd5b, type: 3}
+--- !u!114 &114970540399498906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1968020700916960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e3c3abf1477e1429cc0d1410475255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1

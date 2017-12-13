@@ -5,16 +5,15 @@ public class FUCKTHERULES :MonoBehaviour
 {
 
     int counter;
-    GameObject eff;
+    public GameObject blinkingObj;
     bool blinking;
     public ActivateGame manager;
 
     // Use this for initialization
     void Start ( )
     {
-        eff = transform.Find( "Eff" ).gameObject;
         blinking = true;
-        StartCoroutine( blink( ) );
+        StartCoroutine( Blink( ) );
         counter = 0;
     }
 
@@ -24,20 +23,19 @@ public class FUCKTHERULES :MonoBehaviour
 
     }
 
-    IEnumerator blink ( )
+    IEnumerator Blink ( )
     {
         while( blinking )
         {
-            eff.SetActive( true );
+            blinkingObj.SetActive( true );
             yield return new WaitForSeconds( 0.1f );
-            eff.SetActive( false );
+            blinkingObj.SetActive( false );
             yield return new WaitForSeconds( 0.1f );
             counter++;
             if( counter > 3 )
             {
                 blinking = false;
                 manager.ActivateStuff( );
-                transform.parent.gameObject.SetActive( false );
             }
         }
     }

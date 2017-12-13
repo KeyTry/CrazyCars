@@ -7,6 +7,10 @@ public class TimeScaler :MonoBehaviour
     void Start ( )
     {
         Time.timeScale = 0.4f;
+        if( car == null )
+        {
+            car = GameObject.FindGameObjectWithTag( "Player" ).GetComponent<Rigidbody>();
+        }
     }
     void FixedUpdate ( )
     {

@@ -2539,6 +2539,7 @@ GameObject:
   - component: {fileID: 65074084336086302}
   - component: {fileID: 114354873239026740}
   - component: {fileID: 82088122745079296}
+  - component: {fileID: 114125838903661578}
   m_Layer: 0
   m_Name: Camion
   m_TagString: Car
@@ -15771,7 +15772,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1248737683262562}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -2.81, y: 0, z: 8.440001}
+  m_LocalPosition: {x: 6.660494, y: 5.5905104, z: -22.363323}
   m_LocalScale: {x: 0.06928089, y: 0.069280975, z: 0.069280975}
   m_Children:
   - {fileID: 4988465700507484}
@@ -48305,6 +48306,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114125838903661578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1248737683262562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e3c3abf1477e1429cc0d1410475255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
 --- !u!114 &114354873239026740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -48316,7 +48329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe8ca14d7a8a44c9919bf1a9acc7339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   explodeAnimator: {fileID: 95412121504280074}
   originalMesh: {fileID: 1456983854634582}
   explodeMesh: {fileID: 1984934364245334}

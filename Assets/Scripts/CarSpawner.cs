@@ -1,38 +1,73 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CarSpawner :MonoBehaviour
 {
-    public GameObject[] carros;
-    CarroScript script;
-    // Use this for initialization
-    void Start ( )
+    private readonly float RANDOM_DISTANCIA_Z = 5f;
+    private readonly float RANDOM_DISTANCIA_X = 1f;
+
+    private readonly int MIN_RANDOM_CHANCE = 1;
+    private readonly int MAX_RANDOM_CHANCE = 8;
+
+    private readonly int CHANCE_TO_SPAWN = 3;
+
+    public GameObject[] carrosList;
+
+    private Transform[] spawnerList;
+    private float[] nextSpawnList;
+
+    private Transform transformSpawner;
+    private Vector3 position;
+
+    private void Awake ( )
     {
-        StartCoroutine( spawnCars( ) );
+        spawnerList = GetComponentsInChildren<Transform>( );
+        nextSpawnList = new float[ spawnerList.Length ];
     }
 
-    // Update is called once per frame
-    void Update ( )
+    private void Update ( )
     {
-
-    }
-
-    IEnumerator spawnCars ( )
-    {
-        int randomNum = Random.Range( 0, 3 );
-        int randomDistanceZ = Random.Range( -5, 5 );
-        int randomDistanceX = Random.Range( -1, 1 );
-        int randomChance = Random.Range( 1, 8 );
-        if( randomChance == 3 )
+        for( int i = 0; i < nextSpawnList.Length; i++ )
         {
-            GameObject newCar = Instantiate( carros[ randomNum ], this.transform.position + new Vector3( randomDistanceX, 0f, randomDistanceZ ), this.transform.rotation );
-            script = newCar.GetComponent<CarroScript>( );
-            script.speed = Random.Range( 0.5f, 3f );
-            script.InitVelocity( );
-            //			Destroy (newCar, 5f);
+            if( NextFire( i ) )
+            {
+                SpawnCars( i );
+            }
         }
-        float newTime = Random.Range( 0.5f, 2f );
-        yield return new WaitForSeconds( newTime );
-        StartCoroutine( spawnCars( ) );
+    }
+
+    private bool NextFire ( int i )
+    {
+        return Time.time >= nextSpawnList[ i ];
+    }
+
+    private void SpawnCars ( int i )
+    {
+        if( ChanceToSpawn( ) )
+        {
+            PickPosition( i );
+            SpawnObject( );
+        }
+        CalcNextTime( i );
+    }
+
+    private bool ChanceToSpawn ( )
+    {
+        return Random.Range( MIN_RANDOM_CHANCE, MAX_RANDOM_CHANCE ) == CHANCE_TO_SPAWN;
+    }
+
+    private void PickPosition ( int i )
+    {
+        transformSpawner = spawnerList[ i ];
+        position = transformSpawner.position + new Vector3( Random.Range( -RANDOM_DISTANCIA_X, RANDOM_DISTANCIA_X ), 0f, Random.Range( -RANDOM_DISTANCIA_Z, RANDOM_DISTANCIA_Z ) );
+    }
+
+    private void SpawnObject ( )
+    {
+        PoolManager.Spawn( carrosList[ Random.Range( 0, carrosList.Length ) ], position, transformSpawner.rotation );
+    }
+
+    private void CalcNextTime ( int i )
+    {
+        nextSpawnList[ i ] = Time.time + Random.Range( 0.5f, 2f );
     }
 }

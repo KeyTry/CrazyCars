@@ -29,7 +29,7 @@ public class GameManager :MonoBehaviour
         }
     }
 
-    public void exitGame ( )
+    public void ExitGame ( )
     {
         Application.Quit( );
     }

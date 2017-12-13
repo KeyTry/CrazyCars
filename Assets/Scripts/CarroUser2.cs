@@ -15,7 +15,7 @@ public class CarroUser2 :MonoBehaviour
 
     public bool input;
     CarroEplode explode;
-    CarroScript colScript;
+
     public float speed;
     public float constSpeed;
     public float HightSpeed;
@@ -26,10 +26,9 @@ public class CarroUser2 :MonoBehaviour
     AudioSource audioSource;
 
     public float tilt;
+    
 
-    private float velocity;
-
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
     public bool toExplode;
 
@@ -43,7 +42,7 @@ public class CarroUser2 :MonoBehaviour
     {
         input = false;
         explode = gameObject.GetComponent<CarroEplode>( );
-        rigidbody = GetComponent<Rigidbody>( );
+        rb = GetComponent<Rigidbody>( );
 
         glow.SetActive( false );
         inPower = false;
@@ -86,9 +85,9 @@ public class CarroUser2 :MonoBehaviour
 
             movement = new Vector3( moveHorizontal, 0.0f, moveVertical );
         }
-        rigidbody.velocity = movement * speed;
+        rb.velocity = movement * speed;
 
-        rigidbody.rotation = Quaternion.Euler( 0.0f, rigidbody.velocity.x * -tilt, 0.0f );
+        rb.rotation = Quaternion.Euler( 0.0f, rb.velocity.x * -tilt, 0.0f );
     }
 
     void OnCollisionEnter ( Collision col )
