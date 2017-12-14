@@ -9,6 +9,8 @@ public class CarroEplode :MonoBehaviour
     public GameObject explodeMesh;
     private Animator animator;
 
+    private BoxCollider carroCollider;
+
     public float timeForEndCallback;
 
     public float timeScale;
@@ -16,11 +18,13 @@ public class CarroEplode :MonoBehaviour
     // Use this for initialization
     void Start ( )
     {
+        carroCollider = gameObject.GetComponent<BoxCollider>();
         animator = explodeMesh.GetComponent<Animator>( );
     }
 
     public void Explode ( )
     {
+        carroCollider.enabled = false;
         Invoke( "EndAnimation", timeForEndCallback );
         Time.timeScale = timeScale;
 
