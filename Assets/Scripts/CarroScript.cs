@@ -15,10 +15,13 @@ public class CarroScript :MonoBehaviour
 
     private AudioSource audioSource;
 
+    private BoxCollider carroCollider;
+
     void Awake ( )
     {
         audioSource = gameObject.GetComponent<AudioSource>( );
         rb = GetComponent<Rigidbody>( );
+        carroCollider = gameObject.GetComponent<BoxCollider>();
     }
 
     private void OnDespawned ( )
@@ -35,6 +38,7 @@ public class CarroScript :MonoBehaviour
 
     public void Explode ( )
     {
+        carroCollider.enabled = false;
         audioSource.clip = boomSound;
         audioSource.Play( );
         originalMesh.SetActive( false );
