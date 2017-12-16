@@ -50,11 +50,8 @@ public class TimeScaler :Singleton<TimeScaler>
     {
         input = Input.GetAxis( "Vertical" );
     }
-
     private void FixedUpdate ( )
     {
-        Time.timeScale = MathfExtension.Remap( input, -1f, 1f, minTimeScale, maxTimeScale );
-
         if( input > 0 )
         {
             Time.timeScale = maxTimeScale;

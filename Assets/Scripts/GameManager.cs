@@ -23,7 +23,7 @@ public class GameManager :Singleton<GameManager>
         }
     }
 
-    public float points;
+    private float points;
     public int displayPoints;
     public Rigidbody carro;
     public bool countPoints;
@@ -53,7 +53,8 @@ public class GameManager :Singleton<GameManager>
             carroSpeed = carro.velocity.magnitude;
             if( carroSpeed > minSpeedToCountPoints )
             {
-                points = ( ( points + ( ( Mathf.Pow( 1.2f, ( carroSpeed * 0.4f ) ) ) ) ) ) / 10;
+                points = points + ( ( Mathf.Pow( 1.2f, ( carroSpeed * 0.4f ) ) ) );
+                displayPoints = ( int )points / 10;
             }
         }
     }

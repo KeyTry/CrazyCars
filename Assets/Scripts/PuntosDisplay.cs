@@ -25,7 +25,7 @@ public class PuntosDisplay :MonoBehaviour
 
     private void OnGUI ( )
     {
-        txt.text = GameManager.Instance.points.ToString();
+        txt.text = "" + GameManager.Instance.displayPoints;
         if( carro.velocity.magnitude > 18 )
         {
             txt.color = fastColor;
