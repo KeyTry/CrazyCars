@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class CarroScript :MonoBehaviour
 {
-    private readonly float MIN_SPEED = 0.5f;
-    private readonly float MAX_SPEED = 3f;
+    public float minSpeed = 0.5f;
+    public float maxSpeed = 2.5f;
 
     public Animator explodeAnimator;
     public GameObject originalMesh;
@@ -33,7 +33,7 @@ public class CarroScript :MonoBehaviour
     {
         originalMesh.SetActive( true );
         explodeMesh.SetActive( false );
-        rb.velocity = transform.forward * UnityEngine.Random.Range( MIN_SPEED, MAX_SPEED );
+        rb.velocity = transform.forward * UnityEngine.Random.Range( minSpeed, maxSpeed );
     }
 
     public void Explode ( )

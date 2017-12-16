@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 4432309743640322}
   - component: {fileID: 65926873207814700}
   - component: {fileID: 114165980710326132}
+  - component: {fileID: 114819680291451170}
   m_Layer: 0
   m_Name: Power
   m_TagString: Power
@@ -154,3 +155,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a979437de4d7410ca0d9dc51c9bd356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114819680291451170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1126068594974918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e3c3abf1477e1429cc0d1410475255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructor: {fileID: 0}

@@ -3,10 +3,11 @@
 public class Power :MonoBehaviour
 {
 
-    CarroUser2 carro;
-    void Start ( )
+    private CarroUser carro;
+
+    private void Start ( )
     {
-        carro = FindObjectOfType<CarroUser2>( );
+        carro = FindObjectOfType<CarroUser>( );
     }
 
     void OnTriggerEnter ( Collider col )

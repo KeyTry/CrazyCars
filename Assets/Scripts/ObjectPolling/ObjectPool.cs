@@ -29,8 +29,10 @@ public class ObjectPool<T>
 
     private ObjectPoolContainer<T> CreateConatiner ( )
     {
-        var container = new ObjectPoolContainer<T>( );
-        container.Item = factoryFunc( );
+        var container = new ObjectPoolContainer<T>
+        {
+            Item = factoryFunc( )
+        };
         list.Add( container );
         return container;
     }

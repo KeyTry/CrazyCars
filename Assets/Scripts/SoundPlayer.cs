@@ -4,25 +4,21 @@ public class SoundPlayer :MonoBehaviour
 {
 
     public AudioClip[] audios;
-    AudioSource audioSource;
+    public AudioSource audioSource;
 
-    // Use this for initialization
-    void Start ( )
+    private void Start ( )
     {
-        audioSource = gameObject.GetComponent<AudioSource>( );
-        playAudio( );
+        if( audioSource == null )
+        {
+            audioSource = gameObject.GetComponent<AudioSource>( );
+        }
+
+        PlayAudio( );
     }
 
-    // Update is called once per frame
-    void Update ( )
+    private void PlayAudio ( )
     {
-
-    }
-
-    void playAudio ( )
-    {
-        int audioNumber = Random.Range( -1, audios.Length );
-        audioSource.clip = audios[ audioNumber ];
+        audioSource.clip = audios[ Random.Range( -1, audios.Length ) ];
         audioSource.volume = ( 0.1f );
         audioSource.Play( );
     }

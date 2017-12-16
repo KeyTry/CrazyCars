@@ -1,93 +1,138 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class ActivateGame :MonoBehaviour
+public class ActivateGame :Singleton<ActivateGame>
 {
-
     public GameObject city;
-    public GameObject carro;
-    public GameObject uiStuff;
+    public GameObject inGameUI;
     public GameObject menuUI;
+
     public GameObject effTheRules;
     public GameObject pauseMenu;
 
-    CarroUser2 carroScript;
-    GameObject carSpawners;
-    GameManager gm;
-
-    bool paused;
-    float previousTimeScale;
-
-    static bool inicio = true;
-
     public Button resumeButton;
 
-    // Use this for initialization
-    void Start ( )
+    private GameManager gm;
+
+    private bool paused;
+
+    private static bool desdeMenuPrincipal = true;
+
+    private void Start ( )
     {
-        previousTimeScale = 0f;
         paused = false;
-        carroScript = carro.GetComponent<CarroUser2>( );
-        carSpawners = city.transform.Find( "CarSpawners" ).gameObject;
-        gm = gameObject.GetComponent<GameManager>( );
-        if( inicio )
+
+        foreach( var item in city.GetComponentsInChildren<Spawneable>( true ) )
         {
-            DeactivateStuff( );
+            item.Init( );
+        }
+
+        gm = GameManager.Instance;
+        if( desdeMenuPrincipal )
+        {
+            desdeMenuPrincipal = false;
+            gm.Estado = GameManager.State.MENU_PINCIPAL;
+            EventManager.TriggerEvent( EventDefinition.MENU_PRINCIPAL );
+            MenuPrincipal( );
         } else
         {
-            ActivateInit( );
+            gm.Estado = GameManager.State.JUEGO_NUEVO;
+            EventManager.TriggerEvent( EventDefinition.JUEGO_NUEVO );
+            JuegoNuevo( );
         }
     }
 
-    // Update is called once per frame
-    void Update ( )
+    private void OnEnable ( )
     {
-        Pause( );
+        EventManager.AddListener( EventDefinition.FIN_BLINKING_UI, OnFinBlinkingUI );
     }
 
-    void DeactivateStuff ( )
+    private void OnDisable ( )
     {
-        uiStuff.gameObject.SetActive( false );
-        carroScript.input = false;
-        carroScript.toExplode = false;
-        carSpawners.SetActive( true );
-        gm.countPoints = false;
-        inicio = false;
+        EventManager.RemoveListener( EventDefinition.FIN_BLINKING_UI, OnFinBlinkingUI );
     }
 
-    public void ActivateInit ( )
+    private void OnFinBlinkingUI ( )
     {
-        uiStuff.gameObject.SetActive( false );
-        carSpawners.SetActive( false );
-        gm.countPoints = false;
-        menuUI.gameObject.SetActive( false );
-        carroScript.input = true;
-        carroScript.toExplode = false;
-        effTheRules.gameObject.SetActive( true );
-    }
+        inGameUI.SetActive( true );
+        menuUI.SetActive( false );
+        effTheRules.SetActive( false );
+        pauseMenu.SetActive( false );
 
-    public void ActivateStuff ( )
-    {
-        carroScript.input = true;
-        carroScript.toExplode = true;
-        uiStuff.gameObject.SetActive( true );
-        carSpawners.SetActive( true );
         gm.countPoints = true;
     }
 
-    public void Pause ( )
+    private void JuegoNuevo ( )
+    {
+        inGameUI.SetActive( false );
+        menuUI.SetActive( false );
+        effTheRules.SetActive( true );
+        pauseMenu.SetActive( false );
+
+        gm.countPoints = false;
+    }
+
+    private void MenuPrincipal ( )
+    {
+        inGameUI.SetActive( false );
+        menuUI.SetActive( true );
+        effTheRules.SetActive( false );
+        pauseMenu.SetActive( false );
+
+        gm.countPoints = false;
+    }
+
+    private void MenuPause ( )
+    {
+        inGameUI.SetActive( false );
+        menuUI.SetActive( true );
+        effTheRules.SetActive( false );
+        pauseMenu.SetActive( false );
+
+
+        pauseMenu.gameObject.SetActive( true );
+        resumeButton.Select( );
+
+        gm.countPoints = false;
+        paused = true;
+    }
+
+    private void DisposeMenuPause ( )
+    {
+        inGameUI.SetActive( false );
+        menuUI.SetActive( true );
+        effTheRules.SetActive( false );
+        pauseMenu.SetActive( false );
+
+
+        pauseMenu.gameObject.SetActive( false );
+        paused = false;
+
+
+        gm.countPoints = false;
+    }
+
+    private void Update ( )
+    {
+        CheckPause( );
+    }
+
+    public void BotonIniciar ( )
+    {
+        gm.Estado = GameManager.State.JUEGO_NUEVO;
+        EventManager.TriggerEvent( EventDefinition.JUEGO_NUEVO );
+        JuegoNuevo( );
+    }
+
+    public void CheckPause ( )
     {
         if( Input.GetButtonDown( "Cancel" ) )
         {
             if( !paused )
             {
-                previousTimeScale = Time.timeScale;
-                Time.timeScale = 0;
-                DeactivateStuff( );
-                pauseMenu.gameObject.SetActive( true );
-                carroScript.StopCar( );
-                resumeButton.Select( );
-                paused = true;
+                EventManager.TriggerEvent( EventDefinition.PAUSE );
+                MenuPause( );
             }
         }
     }
@@ -96,11 +141,8 @@ public class ActivateGame :MonoBehaviour
     {
         if( paused )
         {
-            Time.timeScale = previousTimeScale;
-            pauseMenu.gameObject.SetActive( false );
-            ActivateStuff( );
-            carroScript.ResumeCar( );
-            paused = false;
+            EventManager.TriggerEvent( EventDefinition.RESUME );
+            DisposeMenuPause( );
         }
     }
 }

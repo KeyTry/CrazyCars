@@ -4,20 +4,20 @@ public class PowerSpawn :MonoBehaviour
 {
     public GameObject power;
 
-    // Use this for initialization
-    void Start ( )
+    private void Start ( )
     {
-        spawnPower( );
+        SpawnPower( );
     }
 
-    void spawnPower ( )
+    private void SpawnPower ( )
     {
-        int randomChance = Random.Range( 0, 9 );
+        var randomChance = Random.Range( 0, 9 );
         if( randomChance == 5 )
         {
-            float randomDistanceZ = Random.Range( -15f, 15f );
-            float randomDistanceX = Random.Range( -1.5f, 1.5f );
-            GameObject newCar = Instantiate( power, this.transform.position + new Vector3( randomDistanceX, 0f, randomDistanceZ ), this.transform.rotation );
+            var randomDistanceZ = Random.Range( -15f, 15f );
+            var randomDistanceX = Random.Range( -1.5f, 1.5f );
+
+            PoolManager.Spawn( Instantiate( power, this.transform.position + new Vector3( randomDistanceX, 0f, randomDistanceZ ), transform.rotation ) );
         }
     }
 }

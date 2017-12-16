@@ -2,18 +2,41 @@
 
 public class CityDestroyer :MonoBehaviour
 {
-    GameObject section;
+    private GameObject section;
+    private bool isDisable;
+    public Transform destructor;
 
-    void Start ( )
+    private void Start ( )
     {
+        if( destructor == null )
+        {
+            destructor = GameObject.Find( "DESTRUCTOR" ).transform;
+        }
+
         section = transform.parent.gameObject;
     }
 
-    void OnTriggerExit ( Collider col )
+    private void Update ( )
     {
-        if( col.CompareTag( "Player" ) )
+        if( transform.position.z <= destructor.position.z && !isDisable )
         {
-            Destroy( section );
+            isDisable = true;
+
+            foreach( var item in section.GetComponentsInChildren<Spawneable>( true ) )
+            {
+                item.Dispose( );
+            }
+            PoolManager.DeSpawn( section );
         }
+    }
+
+    private void OnSpawned ( )
+    {
+        isDisable = false;
+    }
+
+    private void OnDespawned ( )
+    {
+        isDisable = true;
     }
 }

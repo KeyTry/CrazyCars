@@ -3,31 +3,35 @@ using UnityEngine.UI;
 
 public class PuntosDisplay :MonoBehaviour
 {
-
-    public GameObject managerObject;
     public Rigidbody carro;
-    GameManager gm;
-    Text txt;
-    Color32 redColor;
+    public Text txt;
+    public Color32 fastColor;
+    public Color32 slowColor;
 
-    // Use this for initialization
-    void Start ( )
+    private void Start ( )
     {
-        txt = gameObject.GetComponent<Text>( );
-        gm = managerObject.GetComponent<GameManager>( );
-        redColor = new Color32( 214, 61, 61, 255 );
+
+        if( carro == null )
+        {
+            carro = FindObjectOfType<CarroUser>( ).GetComponent<Rigidbody>( );
+        }
+
+        if( txt == null )
+        {
+            txt = gameObject.GetComponent<Text>( );
+        }
+
     }
 
-    // Update is called once per frame
-    void OnGUI ( )
+    private void OnGUI ( )
     {
-        txt.text = "" + gm.displayPoints;
+        txt.text = GameManager.Instance.points.ToString();
         if( carro.velocity.magnitude > 18 )
         {
-            txt.color = redColor;
+            txt.color = fastColor;
         } else
         {
-            txt.color = Color.white;
+            txt.color = slowColor;
         }
     }
 }

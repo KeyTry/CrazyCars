@@ -38,10 +38,9 @@ public class PoolManager :Singleton<PoolManager>
         {
             foreach( var pool in warmer )
             {
-                PoolManager.WarmPool( pool.prefab, pool.size );
+                _WarmPool( pool.prefab, pool.size );
             }
         }
-
     }
 
     private void _WarmPool ( GameObject prefab, int size )
@@ -62,6 +61,13 @@ public class PoolManager :Singleton<PoolManager>
         return _Spawn( prefab, Vector3.zero, Quaternion.identity );
     }
 
+    public GameObject _Spawn ( GameObject prefab, Vector3 position, Quaternion rotation, Transform parent )
+    {
+        var clone = _Spawn( prefab, position, rotation );
+        clone.transform.parent = parent;
+        return clone;
+    }
+
     public GameObject _Spawn ( GameObject prefab, Vector3 position, Quaternion rotation )
     {
         if( !prefabLookup.ContainsKey( prefab ) )
@@ -75,7 +81,7 @@ public class PoolManager :Singleton<PoolManager>
         clone.transform.position = position;
         clone.transform.rotation = rotation;
         clone.SetActive( true );
-        clone.SendMessage( "OnSpawned", SendMessageOptions.DontRequireReceiver );
+        clone.BroadcastMessage( "OnSpawned", clone, SendMessageOptions.DontRequireReceiver );
 
         instanceLookup.Add( clone, pool );
         return clone;
@@ -83,25 +89,25 @@ public class PoolManager :Singleton<PoolManager>
 
     public void _ReleaseObject ( GameObject clone )
     {
+        clone.BroadcastMessage( "OnDespawned", clone, SendMessageOptions.DontRequireReceiver );
+
         if( instanceLookup.ContainsKey( clone ) )
         {
-            clone.SendMessage( "OnDespawned", SendMessageOptions.DontRequireReceiver );
-
             instanceLookup[ clone ].ReleaseItem( clone );
             instanceLookup.Remove( clone );
-
-            clone.SetActive( false );
-        } else
-        {
-            Debug.LogWarning( "No pool contains the object: " + clone.name );
         }
+
+        clone.SetActive( false );
     }
 
     private GameObject _InstantiatePrefab ( GameObject prefab )
     {
         var go = Instantiate( prefab ) as GameObject;
         if( root != null )
+        {
             go.transform.parent = root;
+        }
+
         return go;
     }
 
@@ -133,6 +139,11 @@ public class PoolManager :Singleton<PoolManager>
     {
         return Instance._Spawn( prefab, position, rotation );
     }
+
+    //public static GameObject Spawn ( GameObject prefab, Vector3 position, Quaternion rotation, Transform parent )
+    //{
+    //    return Instance._Spawn( prefab, position, rotation, parent );
+    //}
 
     public static void DeSpawn ( GameObject clone )
     {

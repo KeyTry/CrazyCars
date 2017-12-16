@@ -4,26 +4,19 @@ using UnityEngine;
 public class FUCKTHERULES :MonoBehaviour
 {
 
-    int counter;
     public GameObject blinkingObj;
-    bool blinking;
-    public ActivateGame manager;
 
-    // Use this for initialization
-    void Start ( )
+    private int counter;
+    private bool blinking;
+
+    private void OnEnable ( )
     {
         blinking = true;
         StartCoroutine( Blink( ) );
         counter = 0;
     }
 
-    // Update is called once per frame
-    void Update ( )
-    {
-
-    }
-
-    IEnumerator Blink ( )
+    private IEnumerator Blink ( )
     {
         while( blinking )
         {
@@ -35,7 +28,7 @@ public class FUCKTHERULES :MonoBehaviour
             if( counter > 3 )
             {
                 blinking = false;
-                manager.ActivateStuff( );
+                EventManager.TriggerEvent( EventDefinition.FIN_BLINKING_UI );
             }
         }
     }
